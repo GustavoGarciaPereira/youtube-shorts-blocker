@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — YouTube Shorts Blocker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #FFD93D;
+      --yellow-dim: #FFD93D22;
+      --yellow-border: #FFD93D44;
+      --bg: #0d0d1a;
+      --surface: #13131f;
+      --surface2: #1a1a2e;
+      --text: #e8e8f0;
+      --muted: #8888aa;
+      --green: #4ade80;
+      --green-dim: #4ade8018;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      border-bottom: 1px solid var(--yellow-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, #FFD93D0d, transparent);
+      pointer-events: none;
+    }
+
+    .face {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      display: block;
+      filter: drop-shadow(0 0 16px #FFD93D55);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: -0.5px;
+    }
+
+    .hero .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: var(--green-dim);
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── SEÇÕES ── */
+    .section {
+      margin-bottom: 36px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .section p {
+      color: #b0b0c8;
+      margin-bottom: 10px;
+    }
+
+    /* ── CARD DE DESTAQUE ── */
+    .highlight-card {
+      background: var(--surface2);
+      border: 1px solid var(--yellow-border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .highlight-card p {
+      color: var(--text);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* ── LISTA DE DADOS ── */
+    .data-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .data-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 12px 16px;
+      border: 1px solid #ffffff08;
+    }
+
+    .data-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .data-text {
+      font-size: 0.92rem;
+      color: #b0b0c8;
+    }
+
+    .data-text strong {
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── PERMISSÕES ── */
+    .perm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.9rem;
+    }
+
+    .perm-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface2);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .perm-table th:first-child { border-radius: 8px 0 0 0; }
+    .perm-table th:last-child  { border-radius: 0 8px 0 0; }
+
+    .perm-table td {
+      padding: 10px 14px;
+      border-top: 1px solid #ffffff08;
+      color: #b0b0c8;
+      vertical-align: top;
+    }
+
+    .perm-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+    .perm-table tr:last-child td:last-child  { border-radius: 0 0 8px 0; }
+
+    .perm-table td:first-child {
+      color: var(--yellow);
+      font-family: monospace;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .perm-table tbody tr { background: var(--surface); }
+    .perm-table tbody tr:hover { background: var(--surface2); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--yellow-border), transparent);
+      margin: 36px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid #ffffff08;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--yellow); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .perm-table { font-size: 0.82rem; }
+      .perm-table th, .perm-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <svg class="face" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="54" fill="#FFD93D" stroke="#F4A914" stroke-width="3"/>
+      <ellipse cx="42" cy="48" rx="7" ry="8" fill="#222"/>
+      <circle cx="44" cy="45" r="2.5" fill="white"/>
+      <ellipse cx="78" cy="48" rx="7" ry="8" fill="#222"/>
+      <circle cx="80" cy="45" r="2.5" fill="white"/>
+      <path d="M38 72 Q60 92 82 72" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="30" cy="68" r="9" fill="#FF8FAB" opacity="0.5"/>
+      <circle cx="90" cy="68" r="9" fill="#FF8FAB" opacity="0.5"/>
+    </svg>
+    <h1>Política de Privacidade</h1>
+    <p class="subtitle">YouTube Shorts Blocker</p>
+    <span class="badge">✅ Nenhum dado coletado</span>
+  </header>
+
+  <main class="container">
+
+    <div class="section">
+      <div class="section-label">Resumo</div>
+      <div class="highlight-card">
+        <p>O YouTube Shorts Blocker <strong>não coleta, não armazena, não vende e não transmite nenhum dado pessoal</strong> do usuário. Toda a operação da extensão acontece localmente no seu navegador.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Dados coletados</div>
+      <h2>O que a extensão acessa</h2>
+      <p>A extensão acessa apenas o conteúdo necessário para realizar sua única função: bloquear os YouTube Shorts. Veja o que é e o que não é utilizado:</p>
+
+      <div class="data-list">
+        <div class="data-item">
+          <span class="data-icon">⚙️</span>
+          <div class="data-text">
+            <strong>Preferência de ativação (local)</strong>
+            Armazenada apenas no seu navegador via <code>chrome.storage.sync</code>. Indica se o bloqueio está ligado ou desligado. Não sai do seu dispositivo.
+          </div>
+        </div>
+        <div class="data-item">
+          <span class="data-icon">🌐</span>
+          <div class="data-text">
+            <strong>URL da aba ativa do YouTube</strong>
+            Verificada localmente para identificar páginas de Shorts e redirecionar para o player normal. Não é registrada nem transmitida.
+          </div>
+        </div>
+        <div class="data-item">
+          <span class="data-icon">🚫</span>
+          <div class="data-text">
+            <strong>Histórico de navegação</strong>
+            Não coletado. A extensão não monitora quais vídeos você assiste.
+          </div>
+        </div>
+        <div class="data-item">
+          <span class="data-icon">🚫</span>
+          <div class="data-text">
+            <strong>Dados pessoais</strong>
+            Nenhum. A extensão não acessa nome, e-mail, localização, conta do Google nem qualquer informação de identificação.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Permissões</div>
+      <h2>Por que cada permissão é necessária</h2>
+
+      <table class="perm-table">
+        <thead>
+          <tr>
+            <th>Permissão</th>
+            <th>Motivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>activeTab</td>
+            <td>Enviar mensagens entre o popup e o content script para ativar ou desativar o bloqueio sem recarregar a página.</td>
+          </tr>
+          <tr>
+            <td>storage</td>
+            <td>Salvar a preferência do usuário (ligado/desligado) localmente entre sessões. Nenhum dado pessoal é salvo.</td>
+          </tr>
+          <tr>
+            <td>*.youtube.com</td>
+            <td>Executar o script nas páginas do YouTube para detectar e ocultar elementos de Shorts e redirecionar URLs /shorts/.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Terceiros</div>
+      <h2>Compartilhamento de dados</h2>
+      <p>A extensão não compartilha nenhum dado com terceiros. Não há servidores externos, não há rastreamento e não há anúncios.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Código remoto</div>
+      <h2>Todo o código está no pacote</h2>
+      <p>A extensão não carrega nenhum JavaScript ou WebAssembly externo. Todo o código está incluído no pacote instalado e pode ser inspecionado diretamente.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Contato</div>
+      <h2>Dúvidas?</h2>
+      <p>Se você tiver qualquer dúvida sobre esta política, pode abrir uma issue no repositório do projeto no GitHub.</p>
+      <p style="margin-top: 8px; color: var(--muted); font-size: 0.88rem;">
+        Última atualização: junho de 2026
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    YouTube Shorts Blocker &nbsp;·&nbsp;
+    Código aberto &nbsp;·&nbsp;
+    Nenhum dado coletado 😊
+  </footer>
+
+</body>
+</html>
