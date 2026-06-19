@@ -3,7 +3,7 @@
 Bloqueia os YouTube Shorts com uma carinha feliz — sem redirecionamento, sem som de fundo, sem coleta de dados.
 
 <p align="center">
-  <img src="icons/icon128.png" alt="logo" width="128">
+  <img src="youtube-shorts-blocker/icons/iconP.png" alt="logo" width="128">
 </p>
 
 ## ✨ Funcionalidades
