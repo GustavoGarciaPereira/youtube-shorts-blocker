@@ -1,0 +1,82 @@
+/* YouTube Shorts Blocker - content.css */
+
+.shorts-blocked-placeholder {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 8px 0;
+  min-height: 120px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #FFD93D44;
+  transition: all 0.3s ease;
+}
+
+.shorts-blocked-placeholder:hover {
+  border-color: #FFD93D99;
+  transform: scale(1.01);
+}
+
+.shorts-blocked-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.shorts-blocked-svg {
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 0 10px #FFD93D66);
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  25% { transform: rotate(3deg) scale(1.05); }
+  50% { transform: rotate(-2deg) scale(1); }
+  75% { transform: rotate(2deg) scale(1.05); }
+}
+
+.shorts-blocked-text {
+  color: #FFD93D;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 0 0 8px #FFD93D88;
+}
+
+/* Overlay de bloqueio na página /shorts/ */
+.shorts-blocked-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 40%, #16213e 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: all !important;
+}
+
+.shorts-blocked-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.shorts-blocked-overlay .shorts-blocked-svg {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 0 20px #FFD93D88);
+  animation: wobble 3s ease-in-out infinite;
+}
+
+.shorts-blocked-overlay .shorts-blocked-text {
+  font-size: 18px;
+}

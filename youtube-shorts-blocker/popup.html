@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Shorts Blocker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 260px;
+      background: linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 100%);
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .face-svg {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 8px;
+      display: block;
+      filter: drop-shadow(0 0 12px #FFD93D88);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFD93D;
+      letter-spacing: 0.3px;
+    }
+
+    h2 {
+      font-size: 11px;
+      color: #aaa;
+      font-weight: 400;
+      margin-top: 3px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #FFD93D44, transparent);
+      margin: 14px 0;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff0d;
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid #ffffff11;
+    }
+
+    .toggle-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #eee;
+    }
+
+    .toggle-sub {
+      font-size: 11px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* Toggle switch */
+    .switch {
+      position: relative;
+      width: 46px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .switch input { display: none; }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #333;
+      border-radius: 26px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid #555;
+    }
+
+    .slider:before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: #888;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    input:checked + .slider {
+      background: #FFD93D22;
+      border-color: #FFD93D;
+    }
+
+    input:checked + .slider:before {
+      background: #FFD93D;
+      transform: translateX(20px) translateY(-50%);
+      box-shadow: 0 0 8px #FFD93D88;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .status.on {
+      background: #FFD93D18;
+      color: #FFD93D;
+      border: 1px solid #FFD93D44;
+    }
+
+    .status.off {
+      background: #ff444418;
+      color: #ff8888;
+      border: 1px solid #ff444444;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <svg class="face-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="54" fill="#FFD93D" stroke="#F4A914" stroke-width="3"/>
+      <ellipse cx="42" cy="48" rx="7" ry="8" fill="#222"/>
+      <circle cx="44" cy="45" r="2.5" fill="white"/>
+      <ellipse cx="78" cy="48" rx="7" ry="8" fill="#222"/>
+      <circle cx="80" cy="45" r="2.5" fill="white"/>
+      <path d="M38 72 Q60 92 82 72" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="30" cy="68" r="9" fill="#FF8FAB" opacity="0.5"/>
+      <circle cx="90" cy="68" r="9" fill="#FF8FAB" opacity="0.5"/>
+    </svg>
+    <h1>Shorts Blocker 🚫</h1>
+    <h2>Bye bye, Shorts!</h2>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="toggle-row">
+    <div>
+      <div class="toggle-label">Bloquear Shorts</div>
+      <div class="toggle-sub">YouTube Shorts</div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="status on" id="status">✅ Shorts bloqueados!</div>
+
+  <div class="footer">funciona no Chrome e Brave 🦁</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
